@@ -4,8 +4,8 @@ import ffmpeg from "fluent-ffmpeg";
 const app = express();  // initializing express by calling it 
 const port = 3000;      // specifying which port we want to use 
 
-app.get("/" , (req, res) => {
-    res.send("Hello world!");
+app.post("/process-video" , (req, res) => {
+    
 });
 
 app.listen(port, () => {
