@@ -5,7 +5,9 @@ const app = express();  // initializing express by calling it
 const port = 3000;      // specifying which port we want to use 
 
 app.post("/process-video" , (req, res) => {
-    
+    // inputVideoPath and outputVideoPath get path input/output of the video we're inputting
+    const inputVideoPath = req.body.inputVideoPath;
+    const outputVideoPath = req.body.outputVideoPath; 
 });
 
 app.listen(port, () => {
