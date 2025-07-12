@@ -2,6 +2,7 @@ import express from "express";
 import ffmpeg from "fluent-ffmpeg";
 
 const app = express();  // initializing express by calling it 
+app.use(express.json());
      
 
 app.post("/process-video" , (req, res) => {
