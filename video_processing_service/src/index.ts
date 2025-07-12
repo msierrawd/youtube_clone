@@ -2,7 +2,7 @@ import express from "express";
 import ffmpeg from "fluent-ffmpeg";
 
 const app = express();  // initializing express by calling it 
-const port = 3000;      // specifying which port we want to use 
+     
 
 app.post("/process-video" , (req, res) => {
     // inputVideoPath and outputVideoPath get path input/output of the video we're inputting
@@ -34,6 +34,8 @@ app.post("/process-video" , (req, res) => {
         .save(outputFilePath);                 // if everything goes well we save the file to directory outputFilePath
 });
 
+
+const port = process.env.PORT || 3000;  // port will be whatever is in the environment variable PORT, or 3000 if there's nothing there. Not necessary but adding it to get used to conventions in deployed apps.
 app.listen(port, () => {
     console.log('Video processing service listening at http://localhost:' + port);
 });
