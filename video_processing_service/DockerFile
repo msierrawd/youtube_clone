@@ -1,0 +1,23 @@
+# first step in a docker file is to start with a base image  
+FROM node:18
+
+# second step is setting working directory for our app within the container
+WORKDIR /app
+
+# third, we copy our package.json and package-lock.json into the working directory in Docker
+COPY package*.json ./ 
+
+# fourth, we install ffmpeg into the container since it is essential for our application
+RUN apt-get update && apt-get install -y ffmpeg 
+
+# fifth (can we fourth as well, the order doesn't really matter), we install any needed packages specified in package.json
+RUN npm install
+
+# sixth, we copy the app source inside the docker image
+COPY . .
+
+# seventh, we make port 3000 available outside this container
+EXPOSE 3000
+
+# lastly, we define the command to run our app using CMD (note: only one CMD allowed at a time)
+CMD [ "npm", "start" ]
